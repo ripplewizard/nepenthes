@@ -1,0 +1,12 @@
+RULES_NODE_COMMIT = '993a258096aaf3d4b295c18856e3405011cad99c' # Update to current HEAD
+RULES_NODE_SHA256 = '993a258096aaf3d4b295c18856e3405011cad99c'
+
+http_archive(
+    name = "org_pubref_rules_node",
+    url = "https://github.com/pubref/rules_node/archive/%s.zip" % RULES_NODE_COMMIT,
+    strip_prefix = "rules_node-%s" % RULES_NODE_COMMIT,
+)
+
+load("@org_pubref_rules_node//node:rules.bzl", "node_repositories")
+
+node_repositories(package_json = ["//:package.json"])
